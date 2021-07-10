@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NuGetSwitcher.Interface", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NuGetSwitcher.VSIXService", "NuGetSwitcher.VSIXService\NuGetSwitcher.VSIXService.csproj", "{ECEBF537-A813-4DA1-ACF9-B4B1E087EBA4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meta", "Meta\Meta.csproj", "{31B57831-D061-4240-80D2-E0E0E17835A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{ECEBF537-A813-4DA1-ACF9-B4B1E087EBA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECEBF537-A813-4DA1-ACF9-B4B1E087EBA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECEBF537-A813-4DA1-ACF9-B4B1E087EBA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31B57831-D061-4240-80D2-E0E0E17835A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31B57831-D061-4240-80D2-E0E0E17835A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31B57831-D061-4240-80D2-E0E0E17835A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31B57831-D061-4240-80D2-E0E0E17835A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

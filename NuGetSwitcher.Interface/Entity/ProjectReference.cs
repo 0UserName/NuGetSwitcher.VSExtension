@@ -101,8 +101,6 @@ namespace NuGetSwitcher.Interface.Entity
              * available ones. 
              */
 
-            // TODO: TFM evaluation (multi-target).
-
             NF = NuGetFramework.Parse(TFM ?? TFMs.Split(';')[0]);
 
             IsTemp = !Directory.GetFiles(Path.GetDirectoryName(solutionFile), Path.GetFileName(MsbProject.FullPath), SearchOption.AllDirectories).Any();

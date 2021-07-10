@@ -65,7 +65,7 @@ namespace NuGetSwitcher.VSIXService.Option
         protected IOptionProvider OptionProvider
         {
             get;
-            set;
+            private set;
         }
 
         public VsixPackageOption()
@@ -82,7 +82,7 @@ namespace NuGetSwitcher.VSIXService.Option
         /// <exception cref="FileNotFoundException"/>
         /// 
         /// <exception cref="ArgumentException">
-        public ReadOnlyDictionary<string, string> GetIncludeItems(ReferenceType type)
+        public virtual ReadOnlyDictionary<string, string> GetIncludeItems(ReferenceType type)
         {
             return OptionProvider.GetIncludeItems(type);
         }

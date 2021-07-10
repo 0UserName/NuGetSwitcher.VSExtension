@@ -1,8 +1,6 @@
 ﻿using Microsoft.Build.Construction;
 using Microsoft.Build.Evaluation;
 
-using Microsoft.VisualStudio.Shell;
-
 using NuGetSwitcher.Interface.Contract;
 using NuGetSwitcher.Interface.Entity;
 
@@ -15,23 +13,18 @@ namespace NuGetSwitcher.VSIXService.Project
 {
     public class VsixProjectProvider : IProjectProvider
     {
-        protected EnvDTE.DTE DTE
-        {
-            get;
-            set;
-        }
-
-        public VsixProjectProvider()
-        {
-            DTE = Package.GetGlobalService(typeof(EnvDTE.DTE)) as EnvDTE.DTE;
-        }
-
         /// <summary>
         /// Absolute path to the solution file.
         /// </summary>
         public string Solution
         {
-            get => DTE.Solution.FullName;
+            get;
+            private set;
+        }
+
+        public VsixProjectProvider(string solution)
+        {
+            Solution = solution;
         }
 
         /// <summary>
@@ -45,12 +38,12 @@ namespace NuGetSwitcher.VSIXService.Project
             List<IProjectReference>
             (30);
 
-            foreach (var kv in SolutionFile.Parse(DTE.Solution.FullName).ProjectsByGuid)
+            foreach (var kv in SolutionFile.Parse(Solution).ProjectsByGuid)
             {
                 switch (kv.Value.ProjectType)
                 {
                     case SolutionProjectType.KnownToBeMSBuildFormat:
-                        projects.Add(new ProjectReference(DTE.Solution.FullName, GetLoadedProject(kv.Value.AbsolutePath)));
+                        projects.Add(new ProjectReference(Solution, GetLoadedProject(kv.Value.AbsolutePath)));
                         break;
                 }
             }

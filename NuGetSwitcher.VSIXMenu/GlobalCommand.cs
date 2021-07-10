@@ -17,19 +17,19 @@ namespace NuGetSwitcher.VSIXMenu
         public ICommandProvider CommandProvider
         {
             get;
-            protected set;
+            private set;
         }
 
         public IMessageProvider MessageProvider
         {
             get;
-            protected set;
+            private set;
         }
 
         public string Name
         {
             get;
-            protected set;
+            private set;
         }
 
         protected GlobalCommand(ICommandProvider commandProvider, IMessageProvider messageProvider)

@@ -16,6 +16,7 @@ using System;
 using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace NuGetSwitcher
 {
@@ -48,7 +49,7 @@ namespace NuGetSwitcher
         /// or an already completed task if there is none. Do not return 
         /// null from this method.
         /// </returns>
-        protected override async System.Threading.Tasks.Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
+        protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
 
@@ -59,7 +60,13 @@ namespace NuGetSwitcher
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
 
             IMessageProvider messageProvider = new VsixMessageProvider(vsSolution, new ErrorListProvider(this));
-            IProjectProvider projectProvider = new VsixProjectProvider();
+
+            if (vsSolution.GetSolutionInfo(out string pbstrSolutionDirectory, out string pbstrSolutionFile, out string pbstrUserOptsFile) != 0)
+            {
+                throw new Exception("DASDAS");
+            }
+
+            IProjectProvider projectProvider = new VsixProjectProvider(pbstrSolutionFile);
 
             RegisterService(messageProvider);
             RegisterService(projectProvider);
